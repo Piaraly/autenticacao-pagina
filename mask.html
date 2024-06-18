@@ -105,10 +105,11 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert('Dados enviados com sucesso!');
+                alert('Você receberá um novo email para participar da pesquisa.');
             })
             .catch(error => {
                 console.error('Erro:', error);
+                alert('Ocorreu um erro ao enviar os dados. Por favor, tente novamente.');
             });
         }
     </script>
